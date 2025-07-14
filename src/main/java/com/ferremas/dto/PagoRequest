@@ -1,0 +1,11 @@
+package com.ferremas.dto;
+
+public class PagoRequest {
+    private Long montoCLP;
+
+    public PagoRequest() {}
+
+    public Long getMontoCLP() { return montoCLP; }
+    public void setMontoCLP(Long montoCLP) { this.montoCLP = montoCLP; }
+}
+

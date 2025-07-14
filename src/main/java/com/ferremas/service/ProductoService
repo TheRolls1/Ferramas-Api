@@ -1,0 +1,40 @@
+package com.ferremas.service;
+
+import com.ferremas.model.Producto;
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.*;
+import com.google.firebase.cloud.FirestoreClient;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class ProductoService {
+
+    private final Firestore db = FirestoreClient.getFirestore();
+
+    public List<Producto> listarProductos() {
+        List<Producto> productos = new ArrayList<>();
+        try {
+            ApiFuture<QuerySnapshot> future = db.collection("productos").get();
+            for (DocumentSnapshot doc : future.get().getDocuments()) {
+                productos.add(doc.toObject(Producto.class));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return productos;
+    }
+
+    public Producto crearProducto(Producto p) {
+        db.collection("productos").document(p.getId()).set(p);
+        return p;
+    }
+
+    public Producto actualizarProducto(String id, Producto p) {
+        db.collection("productos").document(id).set(p);
+        return p;
+    }
+}
+
