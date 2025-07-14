@@ -1,34 +1,24 @@
 package com.ferremas.controller;
 
-import com.ferremas.model.Producto;
 import com.ferremas.service.ProductoService;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/api/productos")
+@CrossOrigin(origins = "*")
 public class ProductoController {
 
-    private final ProductoService productoService;
-
-    public ProductoController(ProductoService productoService) {
-        this.productoService = productoService;
-    }
+    @Autowired
+    private ProductoService productoService;
 
     @GetMapping
-    public List<Producto> getAll() {
-        return productoService.listarProductos();
-    }
-
-    @PostMapping
-    public ResponseEntity<Producto> crearProducto(@RequestBody Producto producto) {
-        return ResponseEntity.ok(productoService.crearProducto(producto));
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Producto> actualizar(@PathVariable String id, @RequestBody Producto p) {
-        return ResponseEntity.ok(productoService.actualizarProducto(id, p));
+    public List<Map<String, Object>> getAll() throws ExecutionException, InterruptedException {
+        return productoService.obtenerProductos();
     }
 }
+

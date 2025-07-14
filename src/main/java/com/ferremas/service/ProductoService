@@ -1,40 +1,32 @@
 package com.ferremas.service;
 
-import com.ferremas.model.Producto;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ExecutionException;
 
 @Service
 public class ProductoService {
 
-    private final Firestore db = FirestoreClient.getFirestore();
+    private static final String COLLECTION_NAME = "productos";
 
-    public List<Producto> listarProductos() {
-        List<Producto> productos = new ArrayList<>();
-        try {
-            ApiFuture<QuerySnapshot> future = db.collection("productos").get();
-            for (DocumentSnapshot doc : future.get().getDocuments()) {
-                productos.add(doc.toObject(Producto.class));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    public List<Map<String, Object>> obtenerProductos() throws ExecutionException, InterruptedException {
+        Firestore db = FirestoreClient.getFirestore();
+        ApiFuture<QuerySnapshot> future = db.collection(COLLECTION_NAME).get();
+
+        List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+        List<Map<String, Object>> productos = new ArrayList<>();
+
+        for (QueryDocumentSnapshot doc : documents) {
+            Map<String, Object> data = doc.getData();
+            data.put("id", doc.getId());
+            productos.add(data);
         }
+
         return productos;
-    }
-
-    public Producto crearProducto(Producto p) {
-        db.collection("productos").document(p.getId()).set(p);
-        return p;
-    }
-
-    public Producto actualizarProducto(String id, Producto p) {
-        db.collection("productos").document(id).set(p);
-        return p;
     }
 }
 
