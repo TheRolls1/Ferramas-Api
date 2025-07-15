@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FERREMAS - Herramientas para la Construcción</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; font-family:'Roboto',sans-serif; background:#f4f4f4; }
+    header { background:#004990; color:white; display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; }
+    .logo { font-size:1.8rem; font-weight:bold; }
+    nav a { color:white; margin-left:20px; text-decoration:none; font-weight:500; }
+    .hero { background-image:url('https://images.freepik.com/free-photo/construction-site-hero_1220-599.jpg'); background-size:cover; background-position:center; height:300px; display:flex; align-items:center; justify-content:center; color:white; text-shadow:2px 2px 5px rgba(0,0,0,0.7); }
+    .hero h1 { font-size:3rem; margin:0; }
+    main { padding:2rem; }
+    section { margin-bottom:2.5rem; }
+    section h2 { font-size:1.8rem; margin-bottom:1rem; color:#004990; }
+    .productos-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr)); gap:1.5rem; }
+    .producto { background:#fff; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); text-align:center; padding:1rem; transition:transform .2s ease; }
+    .producto:hover { transform:scale(1.03); }
+    .producto img { max-width:100px; height:auto; margin-bottom:.5rem; }
+    .producto p { margin:.5rem 0 0; font-weight:500; }
+    footer { background:#004990; color:white; text-align:center; padding:1rem; margin-top:2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">FERREMAS</div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="sobrenosotros.html">Sobre Nosotros</a>
+      <a href="horarios.html">Horarios</a>
+      <a href="login.html">Login</a>
+      <a href="carrito.html">🛒 Carrito</a>
+    </nav>
+  </header>
+  <div class="hero">
+    <h1>Bienvenido a FERREMAS</h1>
+  </div>
+  <main>
+    <section>
+      <h2>🔧 Herramientas Eléctricas</h2>
+      <div class="productos-grid">
+        <div class="producto"><img src="imagenes/taladro.png" alt="Taladro Bosch"><p>Taladro Bosch 550W - $59.990 CLP</p></div>
+        <div class="producto"><img src="imagenes/esmeril.png" alt="Esmeril Angular"><p>Esmeril Angular B+D - $42.990 CLP</p></div>
+        <div class="producto"><img src="imagenes/sierra.png" alt="Sierra Circular"><p>Sierra Circular Dewalt - $98.990 CLP</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>🛠 Herramientas Manuales</h2>
+      <div class="productos-grid">
+        <div class="producto"><img src="imagenes/martillo.png" alt="Martillo Stanley"><p>Martillo Stanley 16oz - $9.990 CLP</p></div>
+        <div class="producto"><img src="imagenes/atornillador.png" alt="Atornillador Manual"><p>Set Atornillador 10‑en‑1 - $6.490 CLP</p></div>
+        <div class="producto"><img src="imagenes/llaveinglesa.png" alt="Llave Inglesa"><p>Llave Inglesa Ajustable - $7.990 CLP</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>🎨 Pinturas y Acabados</h2>
+      <div class="productos-grid">
+        <div class="producto"><img src="imagenes/pintura.png" alt="Pintura Blanca"><p>Pintura Blanca 4L - $24.990 CLP</p></div>
+        <div class="producto"><img src="imagenes/rodillo.png" alt="Rodillo de Pintura"><p>Rodillo Profesional - $3.990 CLP</p></div>
+        <div class="producto"><img src="imagenes/lija.png" alt="Lija de Madera"><p>Pack Lijas Gr. Fino - $1.990 CLP</p></div>
+      </div>
+    </section>
+  </main>
+  <footer>&copy; 2025 FERREMAS - Todos los derechos reservados.</footer>
+</body>
+</html>
+
